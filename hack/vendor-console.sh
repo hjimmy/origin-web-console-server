@@ -18,10 +18,14 @@ if [[ ! -d "$CONSOLE_REPO_PATH" ]]; then
   exit 1
 fi
 
-echo "Making sure go-bindata binary has been built..."
-pushd vendor/github.com/jteeuwen/go-bindata > /dev/null
-  go install ./...
-popd > /dev/null
+#echo "Making sure go-bindata binary has been built..."
+#pushd vendor/github.com/jteeuwen/go-bindata > /dev/null
+#  go install ./...
+#popd > /dev/null
+
+cp -r vendor/github.com/jteeuwen/ $GOPATH/src/github.com/ 
+cd $GOPATH/src/github.com/ 
+go install ./...
 os::util::ensure::gopath_binary_exists 'go-bindata'
 
 if [[ -z "${GIT_REF:+x}" ]]; then

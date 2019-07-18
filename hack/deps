@@ -26,4 +26,4 @@ if [[ $# -eq 0 ]]; then
 fi
 
 os::util::ensure::system_binary_exists 'digraph'
-digraph "${@}" <"${OS_OUTPUT}/deps"
+cat "${OS_OUTPUT}/deps" | digraph $@

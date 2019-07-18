@@ -51,6 +51,8 @@ if [[ -n "${dirty}" && "${OS_GIT_TREE_STATE}" == "dirty" ]]; then
 
 	# build and output from source to destination
 	mkdir -p "${rpm_tmp_dir}"
+	echo "111111111111111111"
+	echo ${OS_ROOT}
 	ln -fs "${OS_ROOT}" "${rpm_tmp_dir}/SOURCES"
 	ln -fs "${OS_ROOT}" "${rpm_tmp_dir}/BUILD"
 
@@ -125,6 +127,10 @@ gpgcheck = 0
 name = Release from Local Source for ${OS_RPM_NAME}
 enabled = 1
 " > "${repo_path}/local-release.repo"
+
+# added by jian.hou
+rm -rf /etc/yum.repos.d/*
+cp ${repo_path}/local-release.repo /etc/yum.repos.d
 
 os::log::info "Repository file for \`yum\` or \`dnf\` placed at ${repo_path}/local-release.repo
 Install it with:

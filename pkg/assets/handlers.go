@@ -242,7 +242,6 @@ window.OPENSHIFT_CONFIG = {
 	memoryRequestToLimitPercent: {{ .MemoryRequestToLimitPercent }}
   },
   {{ end }}
-  adminConsoleURL: "{{ .AdminConsoleURL }}",
   loggingURL: "{{ .LoggingURL | js}}",
   metricsURL: "{{ .MetricsURL | js}}",
   templateServiceBrokerEnabled: {{ .TemplateServiceBrokerEnabled }},
@@ -294,7 +293,6 @@ type WebConsoleConfig struct {
 	// true, the web console will hide the CPU request, CPU limit, and memory request fields in its editors
 	// and skip validation on those fields. The memory limit field will still be displayed.
 	ClusterResourceOverridesEnabled bool
-	AdminConsoleURL                 string
 }
 
 // ClusterResourceOverrideConfig is the configuration for the ClusterResourceOverride
